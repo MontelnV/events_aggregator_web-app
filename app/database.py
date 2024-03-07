@@ -13,7 +13,9 @@ class Base(DeclarativeBase):
 class EventsORM(Base):
     __tablename__ = "events"
 
+
     id: Mapped[int] = mapped_column(primary_key=True)
+    tag: Mapped[str | None]
     title: Mapped[str]
     description: Mapped[str | None]
     organizer: Mapped[str]
