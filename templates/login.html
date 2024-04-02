@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action = "/events/login" method = "post">
+    <div class="mb-3 text-center">
+        <label class="login-text">Login</label>
+        <input type = "text" name = "username" placeholder= "Enter login" class="form-control text-center" required/>
+    </div>
+    <div class="mb-3 text-center">
+        <label class="login-text">Password</label>
+        <input type = "text" name = "password" placeholder= "Enter password" class="form-control text-center" required/>
+    </div>
+    <div class="text-center">
+        <a href="/events" class="btn btn-go-back">
+            <i class="fas fa-home fa-lg"></i>
+        </a>
+        <button type="submit" class="btn btn-login">
+            <i class="fas fa-sign-in-alt fa-lg"></i>
+        </button>
+    </div>
+</form>
+
+{% endblock content %}
