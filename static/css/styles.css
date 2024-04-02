@@ -1,0 +1,146 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(10deg, #a8a7ce 0%, #3a3a3a 100%); /* Градиентный фон */
+    color: #fff; /* Цвет текста для контраста */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+td {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+table {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.header-top {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.login-text {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* BUTTONS */
+.btn-add {
+    background-color: #000000c6;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    filter: drop-shadow(2px 2px 4px rgba(144, 144, 144, 0.59));
+}
+
+.btn-show {
+    background-color: #000000c6;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    filter: drop-shadow(2px 2px 4px rgba(144, 144, 144, 0.59));
+    margin-top: 0px;
+    margin-bottom: 20px;
+    margin-right: 5px;
+}
+
+.btn-edit {
+    background-color: #228B22;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    filter: drop-shadow(2px 2px 4px rgba(144, 144, 144, 0.59));
+}
+
+.btn-delete {
+    background-color: #CD5C5C;
+    color: #ffffff;
+    padding: 10px 10px;
+    border-radius: 10px;
+    filter: drop-shadow(2px 2px 4px rgba(144, 144, 144, 0.59));
+}
+
+.btn-public {
+    background-color: #228B22;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    filter: drop-shadow(2px 2px 4px rgba(144, 144, 144, 0.59));
+}
+
+.btn-back {
+    background-color: #CD5C5C;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    filter: drop-shadow(2px 2px 4px rgba(144, 144, 144, 0.59));
+
+}
+.btn-logout {
+    background-color: #CD5C5C;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    filter: drop-shadow(2px 2px 4px rgba(144, 144, 144, 0.59));
+
+}
+
+.btn-login {
+    background-color: #228B22;
+    color: #ffffff;
+    padding: 15px 20px;
+    border-radius: 15px;
+    filter: drop-shadow(2px 2px 4px rgba(144, 144, 144, 0.59));
+    margin-bottom: 20px;
+
+}
+
+.btn-go-back {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 15px 20px;
+    border-radius: 15px;
+    filter: drop-shadow(2px 2px 4px rgba(144, 144, 144, 0.59));
+    margin-bottom: 20px;
+
+}
+
+.btn-admin-lk {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px 10px;
+    border-radius: 15px;
+    filter: drop-shadow(2px 2px 4px rgba(144, 144, 144, 0.59));
+    margin-bottom: 20px;
+    margin-left: auto;
+}
+
+.btn-container {
+    display: flex; /* Используем flexbox для контейнера */
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* FORMS */
+
+.form-control {
+    border: 5px solid #0000009c; /* Цвет и толщина обводки */
+    border-radius: 10px; /* Скругление углов обводки */
+    padding: 8px; /* Внутренний отступ вокруг текста в поле ввода */
+}
+
+/* Если вы хотите изменить стиль обводки в состоянии фокуса (когда поле активно) */
+.form-control:focus {
+    border-color: #007bff86; /* Цвет обводки в состоянии фокуса */
+    outline: 0; /* Убирает "фокусную" рамку по умолчанию */
+}
