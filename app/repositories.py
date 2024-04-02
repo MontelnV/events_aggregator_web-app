@@ -23,10 +23,10 @@ class EventRepository:
             if not show_all:
                 query = query.where(EventsORM.event_date >= datetime.now())  # Проверка на актуальность по дате
             result = await session.execute(query)
-            event_models = result.scalars().all()
-            if not event_models:
+            events = result.scalars().all()
+            if not events:
                 return "Events not found"
-            return event_models
+            return events
 
     @classmethod
     async def get_event_by_id(cls, event_id):
@@ -50,7 +50,6 @@ class EventRepository:
             for key, value in event_data.items():
                 setattr(event, key, value)
             await session.commit()
-            return "Event updated successfully"
 
     @classmethod
     async def delete_event(cls, event_id):
@@ -62,4 +61,3 @@ class EventRepository:
                 raise HTTPException(status_code=404, detail="Event not found")
             await session.delete(event)
             await session.commit()
-            return "Event deleted successfully"
