@@ -1,52 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="row">
-    <div class="col-12">
-        <div class="btn-container">
-            <a id="showAll" href="/events?showAll=True" class="btn btn-show"><b>Show all events</b></a>
-            <a id="showNotAll" href="/events?showAll=False" class="btn btn-show"><b>Hide past events</b></a>
-            <a href="/events/login" class="btn btn-admin-lk">
-                <i class="fas fa-users-cog fa-lg"></i>
-            </a>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-                <thead class="table-effect">
-                    <tr>
-                        <th>Тег</th>
-                        <th>Заголовок</th>
-                        <th>Описание</th>
-                        <th>Организатор</th>
-                        <th>Дата и время</th>
-                        <th>Дата закрытия регистрации</th>
-                        <th>Локация</th>
-                        <th>Ссылка</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for rs in events %}
-                        <tr>
-                            <td>{% if rs.tag is not none %}{{ rs.tag }}{% endif %}</td>
-                            <td>{% if rs.title is not none %}{{ rs.title }}{% endif %}</td>
-                            <td>{% if rs.description is not none %}{{ rs.description }}{% endif %}</td>
-                            <td>{% if rs.organizer is not none %}{{ rs.organizer }}{% endif %}</td>
-                            <td>{% if rs.event_date is not none %}{{ rs.event_date }}{% endif %}</td>
-                            <td>{% if rs.registration_close_datetime is not none %}{{ rs.registration_close_datetime }}{% endif %}</td>
-                            <td>{% if rs.location is not none %}{{ rs.location }}{% endif %}</td>
-                            <td>
-                                <a href="{% if rs.registration_link is not none %}{{ rs.registration_link }}{% endif %}" target="_blank">
-                                    {% if rs.registration_link is not none %}{{ rs.registration_link }}{% endif %}
-                                </a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
 
-{% endblock content %}
 <script>
     function confirmDelete(id) {
         if (confirm("Действительно ли вы хотите удалить мероприятие?")) {
@@ -54,4 +8,48 @@
         }
     }
 
+    document.addEventListener('DOMContentLoaded', function() {
+        const eventsInfoDivs = document.querySelectorAll('.events-info');
+
+        eventsInfoDivs.forEach(function(div) {
+            div.addEventListener('click', function() {
+                // Получаем ссылку для перехода
+                const link = div.querySelector('.link-btn').getAttribute('href');
+
+                // Переходим на новую страницу
+                window.location.href = link;
+            });
+        });
+    });
+
 </script>
+<div class="row">
+    <div class="col-12">
+        <div class="btn-container">
+            <a id="showAll" href="/events?showAll=True" class="btn btn-show"><b>Show all</b></a>
+            <a id="showNotAll" href="/events?showAll=False" class="btn btn-show"><b>Hide past</b></a>
+            <a href="/events/login" class="btn btn-admin-lk">
+                <i class="fas fa-users-cog fa-lg"></i>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="events-container">
+    {% for rs in events %}
+        <div class="events-info" data-url="{% if rs.registration_link is not none %}{{ rs.registration_link }}{% endif %}">            <div class="head-info">
+                <h3>{% if rs.title is not none %}{{ rs.title }}{% endif %}</h3>
+                <h3 class="date-info">{% if rs.event_date is not none %}{{ rs.event_date.date() }}{% endif %}</h3>
+            </div>
+            <p><strong>Registration Deadline:</strong> {% if rs.registration_close_datetime is not none %}{{ rs.registration_close_datetime }}{% endif %}</p>
+            <p><strong>Location:</strong> {% if rs.location is not none %}{{ rs.location }}{% endif %}</p>
+            <div class="btn_plus_time">
+                <a class="link-btn" href="{% if rs.registration_link is not none %}{{ rs.registration_link }}{% endif %}" target="_blank"><b>Link</b></a>
+                <p class="datetime-label"><b>Event Time: {% if rs.event_date is not none %}{{ rs.event_date.time() }}{% endif %}</b></p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+
+
+{% endblock content %}
