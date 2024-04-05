@@ -1,4 +1,4 @@
-## FAST-API + FAST-UI Project
+## FAST-API + JINJA Project
 ## Description
 Веб-приложение "Event Aggregator", создано с использованием Python и фреймворков FAST-API (backend) и Jinja (frontend). Приложение представляет собой агрегатор мероприятий, который позволяет пользователям изучать и просматривать разнообразные события.
 
