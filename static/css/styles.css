@@ -1,8 +1,7 @@
-html, body {
-    height: 100%;
+html {
     width: 100%;
+    height: 100%;
 }
-
 body {
     margin: 0;
     background: linear-gradient(10deg, #a8a7ce 0%, #3a3a3a 100%); /* Градиентный фон */
@@ -144,3 +143,54 @@ table {
     border-color: #007bff86; /* Цвет обводки в состоянии фокуса */
     outline: 0; /* Убирает "фокусную" рамку по умолчанию */
 }
+
+/* EVENTS */
+.events-own-container {
+    padding-left: 20px; /* Отступ слева */
+    padding-right: 20px; /* Отступ справа */
+    filter: drop-shadow(2px 2px 4px rgba(144, 144, 144, 0.59));
+}
+
+.events-info {
+    border: 5px solid #000000;
+    padding: 10px; /* Добавляем отступ вокруг контента */
+    margin-bottom: 10px;
+    border-radius: 15px; /* Добавляем отступ снизу для отделения блоков */
+    background: linear-gradient(0deg, #a8a7ce 0%, #3a3a3a 100%); /* Градиентный фон */
+}
+
+
+.btn_plus_time {
+    display: flex; /* Используем flexbox для контейнера */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.link-btn {
+    background: linear-gradient(0deg, #242424 0%, #4d4d4d 100%);
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 15px;
+    margin: 0; /* Сбросим внешние отступы */
+    text-decoration: none;
+    filter: drop-shadow(2px 2px 4px rgba(144, 144, 144, 0.59));
+}
+
+.datetime-label {
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 15px;
+    background: linear-gradient(0deg, #4d4d4d 0%, #242424 100%);
+    margin: 0; /* Сбросим внешние отступы */
+    filter: drop-shadow(2px 2px 4px rgba(144, 144, 144, 0.59));
+}
+
+.head-info {
+    padding-top: 0px;
+    display: flex; /* Используем flexbox для контейнера */
+    justify-content: space-between;
+    align-items: center;
+}
+.date-info {
+    color: #000000;
+    padding: 10px 20px;}
