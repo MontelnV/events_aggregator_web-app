@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from app.database import create_tables, drop_tables
 from contextlib import asynccontextmanager
-
 from app.routes import router as event_router
 from app.frontend import router as frontend_router
 

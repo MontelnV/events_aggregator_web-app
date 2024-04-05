@@ -44,11 +44,11 @@ async def create_event(request: Request, title: str = Form(...),
 async def update_event(request: Request, event_id: int, title: str = Form(...),
                        tag: str = Form(None), organizer: str = Form(None),
                        event_date: datetime = Form(...), registration_close_datetime: datetime = Form(None),
-                       location: str = Form(None), registration_link: str = Form(None), description: str = Form(None), number_on_site: int = Form(None)):
+                       location: str = Form(None), registration_link: str = Form(None), description: str = Form(None)):
 
     event = EventAdd(title=title, tag=tag, organizer=organizer, event_date=event_date,
                      registration_close_datetime=registration_close_datetime, location=location,
-                     registration_link=registration_link, description=description, number_on_site=number_on_site)
+                     registration_link=registration_link, description=description)
     await EventRepository.update_event(event_id, event)
     return RedirectResponse(url="/events/adminlk?showAll=True", status_code=status.HTTP_303_SEE_OTHER)
 

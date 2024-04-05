@@ -28,7 +28,7 @@ async def login_page(request: Request, showAll: bool = False):
     return templates.TemplateResponse("index.html", {"request": request, "events": events})
 
 @router.get("/login")
-async def login_page(request: Request):
+async def login(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 
 @router.get("/admin")
