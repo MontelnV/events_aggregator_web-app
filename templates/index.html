@@ -1,28 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    function confirmDelete(id) {
-        if (confirm("Действительно ли вы хотите удалить мероприятие?")) {
-            window.location.href = "admin/delete/" + id;
-        }
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const eventsInfoDivs = document.querySelectorAll('.events-info');
-
-        eventsInfoDivs.forEach(function(div) {
-            div.addEventListener('click', function() {
-                // Получаем ссылку для перехода
-                const link = div.querySelector('.link-btn').getAttribute('href');
-
-                // Переходим на новую страницу
-                window.location.href = link;
-            });
+    $(document).ready(function() {
+        $('.events-info').click(function() {
+            var registrationLink = $(this).data('url');
+            if (registrationLink) {
+                window.location.href = registrationLink;
+            }
         });
     });
-
 </script>
+
 <div class="row">
     <div class="col-12">
         <div class="btn-container">
@@ -38,14 +28,10 @@
     {% for rs in events %}
         <div class="events-info" data-url="{% if rs.registration_link is not none %}{{ rs.registration_link }}{% endif %}">            <div class="head-info">
                 <h3>{% if rs.title is not none %}{{ rs.title }}{% endif %}</h3>
-                <h3 class="date-info">{% if rs.event_date is not none %}{{ rs.event_date.date() }}{% endif %}</h3>
+                <b class="date-info">{% if rs.event_date is not none %}{{ rs.event_date.strftime('%d.%m.%Y - %H:%M') }}{% endif %}</b>
             </div>
             <p><strong>Registration Deadline:</strong> {% if rs.registration_close_datetime is not none %}{{ rs.registration_close_datetime }}{% endif %}</p>
             <p><strong>Location:</strong> {% if rs.location is not none %}{{ rs.location }}{% endif %}</p>
-            <div class="btn_plus_time">
-                <a class="link-btn" href="{% if rs.registration_link is not none %}{{ rs.registration_link }}{% endif %}" target="_blank"><b>Link</b></a>
-                <p class="datetime-label"><b>Event Time: {% if rs.event_date is not none %}{{ rs.event_date.time() }}{% endif %}</b></p>
-            </div>
         </div>
     {% endfor %}
 </div>
