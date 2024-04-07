@@ -4,8 +4,7 @@ html {
 }
 body {
     margin: 0;
-    background: linear-gradient(10deg, #a8a7ce 0%, #3a3a3a 100%); /* Градиентный фон */
-    color: #fff; /* Цвет текста для контраста */
+    color: #000000; /* Цвет текста для контраста */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -59,7 +58,7 @@ table {
 }
 
 .btn-delete {
-    background-color: #CD5C5C;
+    background-color: #dc0e0e;
     color: #ffffff;
     padding: 10px 10px;
     border-radius: 10px;
@@ -115,7 +114,7 @@ table {
 }
 
 .btn-admin-lk {
-    background-color: #000000;
+    background-color: #090909c5;
     color: #ffffff;
     padding: 10px 10px;
     border-radius: 15px;
@@ -133,7 +132,7 @@ table {
 /* FORMS */
 
 .form-control {
-    border: 5px solid #0000009c; /* Цвет и толщина обводки */
+    border: 2px solid #0f0f0f9c; /* Цвет и толщина обводки */
     border-radius: 10px; /* Скругление углов обводки */
     padding: 8px; /* Внутренний отступ вокруг текста в поле ввода */
 }
@@ -156,16 +155,22 @@ table {
     padding: 10px; /* Добавляем отступ вокруг контента */
     margin-bottom: 10px;
     border-radius: 15px; /* Добавляем отступ снизу для отделения блоков */
-    background: linear-gradient(0deg, #a8a7ce 0%, #3a3a3a 100%); /* Градиентный фон */
+    background-color: #ffffff; /* Цвет фона при обычном состоянии */
+    transition: background-color 0.5s;
+    transition: transform 0.3s;
 }
 
+
+.events-info:hover {
+    transform: scale(1.05);
+    background-color: #e0e0e0; /* Увеличение масштаба при наведении */
+    /* Дополнительные стили для контейнера events-info при наведении */
+}
 
 .btn_plus_time {
-    display: flex; /* Используем flexbox для контейнера */
-    justify-content: space-between;
-    align-items: center;
+    display: flex;
+    justify-content: flex-end; /* Выравниваем содержимое вправо */
 }
-
 .link-btn {
     background: linear-gradient(0deg, #242424 0%, #4d4d4d 100%);
     color: #ffffff;
@@ -176,15 +181,6 @@ table {
     filter: drop-shadow(2px 2px 4px rgba(144, 144, 144, 0.59));
 }
 
-.datetime-label {
-    color: #ffffff;
-    padding: 10px 20px;
-    border-radius: 15px;
-    background: linear-gradient(0deg, #4d4d4d 0%, #242424 100%);
-    margin: 0; /* Сбросим внешние отступы */
-    filter: drop-shadow(2px 2px 4px rgba(144, 144, 144, 0.59));
-}
-
 .head-info {
     padding-top: 0px;
     display: flex; /* Используем flexbox для контейнера */
@@ -192,5 +188,11 @@ table {
     align-items: center;
 }
 .date-info {
-    color: #000000;
-    padding: 10px 20px;}
+    color: #ffffff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    background: linear-gradient(0deg, #005667 0%, #2b2b2b 100%);
+    margin: 0; /* Сбросим внешние отступы */
+    filter: drop-shadow(2px 2px 4px rgba(144, 144, 144, 0.59));
+    font-size: 30px;
+}
