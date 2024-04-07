@@ -14,8 +14,5 @@ pip install -r requirements.txt
 ```
 ### run
 ```
-uvicorn app.main:app --reload
+uvicorn main:app --reload
 ```
-### screenshots
-![image](https://github.com/MontelnV/fastAPI-fastUI_project/assets/139653630/5dce50bd-37cd-40d8-86f3-7e403d36a1b9)
-![image](https://github.com/MontelnV/fastAPI-fastUI_project/assets/139653630/3f92665e-4338-4bd6-9f75-277817734254)
