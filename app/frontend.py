@@ -18,7 +18,7 @@ templates = Jinja2Templates(directory="templates")
 
 def check_authentication(request: Request):
     session_token = request.cookies.get("session_token")
-    if session_token is None or session_token != "Dy8HcAVc05afGsbP4wOF6fRJsWR0Wju1b49rljExFoQh0f0f8qZ75lw2ymXPKhux":
+    if session_token is None or session_token != "Dy8HcAVc05afGsbP4wOF6fRJsoghkju1b49rljExFoQh0f0f8qZ75lw2ymXPKhux":
         return False
     return True
 
@@ -37,7 +37,7 @@ async def home(request: Request, showAll: bool = False):
         return RedirectResponse(url="/events/login", status_code=status.HTTP_303_SEE_OTHER)
 
     events = await EventRepository.get_events(showAll)
-    return templates.TemplateResponse("index.html", {"request": request, "events": events})
+    return templates.TemplateResponse("admin.html", {"request": request, "events": events})
 
 @router.get("/admin/addnew")
 async def addnew(request: Request):
