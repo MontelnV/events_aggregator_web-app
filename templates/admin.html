@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.events-info').click(function() {
+            var registrationLink = $(this).data('url');
+            if (registrationLink) {
+                window.location.href = registrationLink;
+            }
+        });
+    });
+    function confirmDelete(id) {
+        if (confirm("Действительно ли вы хотите удалить мероприятие?")) {
+            window.location.href = "admin/delete/" + id;
+        }
+    }
+</script>
+
+<div class="row">
+    <div class="col-12">
+        <div class="btn-container">
+            <a id="showAll" href="/events?showAll=True" class="btn btn-show"><b>Show all</b></a>
+            <a id="showNotAll" href="/events?showAll=False" class="btn btn-show"><b>Hide past</b></a>
+
+        </div>
+    </div>
+</div>
+<div class="events-container">
+    {% for rs in events %}
+        <div class="events-info" data-url="{% if rs.registration_link is not none %}{{ rs.registration_link }}{% endif %}">            <div class="head-info">
+                <h3>{% if rs.title is not none %}{{ rs.title }}{% endif %}</h3>
+                <b class="date-info">{% if rs.event_date is not none %}{{ rs.event_date.strftime('%d.%m.%Y - %H:%M') }}{% endif %}</b>
+            </div>
+            <p><strong>Registration Deadline:</strong> {% if rs.registration_close_datetime is not none %}{{ rs.registration_close_datetime }}{% endif %}</p>
+            <p><strong>Location:</strong> {% if rs.location is not none %}{{ rs.location }}{% endif %}</p>
+            <div>
+
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+
+
+{% endblock content %}
