@@ -16,3 +16,4 @@ pip install -r requirements.txt
 ```
 uvicorn main:app --reload
 ```
+![image](https://github.com/MontelnV/events_aggregator_web-app/assets/139653630/09464406-c205-4b6d-b3d8-e3e568bb7f3a)
