@@ -21,4 +21,7 @@ uvicorn main:app --reload
 docker build . --tag events
 docker run -d -p 8081:8081 events
 ```
-![image](https://github.com/MontelnV/events_aggregator_web-app/assets/139653630/09464406-c205-4b6d-b3d8-e3e568bb7f3a)
+![image](https://github.com/MontelnV/events_aggregator_web-app/assets/139653630/15685d1a-7fef-4a42-8f96-4b9c43aca122)
+![image](https://github.com/MontelnV/events_aggregator_web-app/assets/139653630/2847a1bb-d79a-4fbd-ba15-ef6b066b8e30)
+
+
