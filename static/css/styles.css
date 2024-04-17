@@ -19,6 +19,8 @@ table {
     overflow: hidden;
 }
 
+
+
 .header-top {
     margin-top: 40px;
     margin-bottom: 30px;
@@ -155,16 +157,13 @@ table {
     padding: 10px; /* Добавляем отступ вокруг контента */
     margin-bottom: 10px;
     border-radius: 15px; /* Добавляем отступ снизу для отделения блоков */
-    background-color: #ffffff; /* Цвет фона при обычном состоянии */
-    transition: background-color 0.5s;
     transition: transform 0.3s;
+    background-position: center;
+    background-size: 100%;
 }
-
 
 .events-info:hover {
     transform: scale(1.05);
-    background-color: #e0e0e0; /* Увеличение масштаба при наведении */
-    /* Дополнительные стили для контейнера events-info при наведении */
 }
 
 .btn_plus_time {
@@ -183,16 +182,18 @@ table {
 
 .head-info {
     padding-top: 0px;
+    padding-bottom: 10px;
     display: flex; /* Используем flexbox для контейнера */
     justify-content: space-between;
     align-items: center;
 }
 .date-info {
-    color: #ffffff;
+    color: #000000;
     padding: 5px 15px;
     border-radius: 20px;
-    background: linear-gradient(0deg, #005667 0%, #2b2b2b 100%);
+    border: 2px solid black;
+    background: linear-gradient(0deg, #ffffff7d 0%, #ffffff7e 100%);
     margin: 0; /* Сбросим внешние отступы */
-    filter: drop-shadow(2px 2px 4px rgba(144, 144, 144, 0.59));
-    font-size: 30px;
+    font-size: 20px;
+    text-align: center;
 }
