@@ -26,7 +26,11 @@
 </div>
 <div class="events-container">
     {% for rs in events %}
-    <div class="events-info" data-url="{% if rs.registration_link is not none %}{{ rs.registration_link }}{% endif %}"style="background-image: url({% if rs.tag == 'IT' %}'/static/images/codespace.jpg'{% elif rs.tag == 'Тег' %}'2.png'{% endif %});">
+    <div class="events-info" data-url="{% if rs.registration_link is not none %}{{ rs.registration_link }}{% endif %}"style="background-image: url({% if rs.tag == 'IT' %}'/static/images/codespace.jpg'
+    {% elif rs.tag == 'Наука и исследования' %}'/static/images/science.jpg'
+    {% elif rs.tag == 'Искусство и музыка' %}'/static/images/art.jpg'
+    {% elif rs.tag == 'Здоровье и спорт' %}'/static/images/sport.jpg'
+    {% endif %});">
             <div class="head-info">
                 <h3>{% if rs.title is not none %}{{ rs.title }}{% endif %}</h3>
                 <div class="date-info">
