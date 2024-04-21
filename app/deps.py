@@ -1,7 +1,4 @@
 from fastapi import Request, status, HTTPException
-from fastapi.responses import RedirectResponse
-
-
 
 def check_authentication(request: Request):
     session_token = request.cookies.get("session_token")
@@ -14,6 +11,5 @@ async def get_user(request: Request) -> str:
         raise HTTPException(
             status_code=status.HTTP_303_SEE_OTHER,
             headers={'location': '/events/login'})
-        # return RedirectResponse(url="/events/login", status_code=status.HTTP_303_SEE_OTHER)
     else:
         return request.cookies.get("session_token")
