@@ -13,15 +13,14 @@ class Base(DeclarativeBase):
 class EventsORM(Base):
     __tablename__ = "events"
 
-
     id: Mapped[int] = mapped_column(primary_key=True)
     tag: Mapped[str | None]
-    title: Mapped[str]
+    title: Mapped[str | None]
     description: Mapped[str | None]
-    organizer: Mapped[str]
-    event_date: Mapped[datetime]
-    registration_close_datetime: Mapped[datetime]
-    location: Mapped[str]
+    organizer: Mapped[str | None]
+    event_date: Mapped[datetime | None]
+    registration_close_datetime: Mapped[datetime | None]
+    location: Mapped[str | None]
     registration_link: Mapped[str | None]
 
 
