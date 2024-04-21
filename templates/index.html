@@ -16,8 +16,8 @@
 <div class="row">
     <div class="col-12">
         <div class="btn-container">
-            <a id="showAll" href="/events?showAll=True" class="btn btn-show"><b>Show all</b></a>
-            <a id="showNotAll" href="/events?showAll=False" class="btn btn-show"><b>Hide past</b></a>
+            <a id="showAll" href="/events?showAll=True" class="btn btn-show"><b>SHOW ALL</b></a>
+            <a id="showNotAll" href="/events?showAll=False" class="btn btn-show"><b>HIDE PAST</b></a>
             <a href="/events/login" class="btn btn-admin-lk">
                 <i class="fas fa-users-cog fa-lg"></i>
             </a>
@@ -26,10 +26,11 @@
 </div>
 <div class="events-container">
     {% for rs in events %}
-    <div class="events-info" data-url="{% if rs.registration_link is not none %}{{ rs.registration_link }}{% endif %}"style="background-image: url({% if rs.tag == 'IT' %}'/static/images/codespace.jpg'
-    {% elif rs.tag == 'Наука и исследования' %}'/static/images/science.jpg'
-    {% elif rs.tag == 'Искусство и музыка' %}'/static/images/art.jpg'
-    {% elif rs.tag == 'Здоровье и спорт' %}'/static/images/sport.jpg'
+    <div class="events-info" data-url="{% if rs.registration_link is not none %}{{ rs.registration_link }}{% endif %}"style=
+    "background-image: url({% if rs.tag == 'IT' %}'/static/images/codespace.jpg'
+    {% elif rs.tag == 'Science and research' %}'/static/images/science.jpg'
+    {% elif rs.tag == 'Art and music' %}'/static/images/art.jpg'
+    {% elif rs.tag == 'Health and sports' %}'/static/images/sport.jpg'
     {% endif %});">
             <div class="head-info">
                 <h3>{% if rs.title is not none %}{{ rs.title }}{% endif %}</h3>
