@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action = "/api/events/{{event.id}}" method = "post">
+    <div class="mb-3">
+        <label><b>Title</b></label>
+        <input type = "text" name = "title" placeholder= "Enter event title (required)" class="form-control" value="{% if event.title is not none %}{{ event.title }}{% endif %}" required/>
+    </div>
+    <div class="mb-3">
+        <label><b>Description</b></label>
+        <input type = "text" name = "description" placeholder= "Enter event description (optional)" class="form-control" value="{% if event.description is not none %}{{ event.description }}{% endif %}"/>
+    </div>
+    <div class="mb-3">
+        <label><b>Organizer</b></label>
+        <input type = "text" name = "organizer" placeholder= "Enter the organizer (optional)" class="form-control" value="{% if event.organizer is not none %}{{ event.organizer }}{% endif %}" />
+    </div>
+    <div class="mb-3">
+        <label><b>Event date and time</b></label>
+        <input type = "datetime-local" name = "event_date" placeholder= "Enter the date and time of registration (required)" class="form-control" required pattern="\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}" value="{% if event.event_date is not none %}{{ event.event_date }}{% endif %}"/>
+    </div>
+    <div class="mb-3">
+        <label><b>Closing date for event registration</b></label>
+        <input type = "datetime-local" name = "registration_close_datetime" placeholder= "Enter the closing date for registration for the event (optional)" class="form-control" value="{% if event.registration_close_datetime is not none %}{{ event.registration_close_datetime }}{% endif %}"/>
+    </div>
+    <div class="mb-3">
+        <label><b>Location</b></label>
+        <input type = "text" name = "location" placeholder= "Enter the location of the event (optional)" class="form-control" value="{% if event.location is not none %}{{ event.location }}{% endif %}"/>
+    </div>
+    <div class="mb-3">
+        <label><b>Registration link</b></label>
+        <input type = "text" name = "registration_link" placeholder= "Enter the registration link (optional)" class="form-control" value="{% if event.registration_link is not none %}{{ event.registration_link }}{% endif %}"/>
+    </div>
+    <div class="mb-3">
+        <label><b>Тег</b></label>
+        <select name="tag" class="form-control">
+            <option value="{% if event.tag is not none %}{{ event.tag }}{% endif %}">{% if event.tag is not none %}{{ event.tag }}{% endif %}</option>
+            <option value="Science and research">Science and research</option>
+            <option value="Art and music">Art and music</option>
+            <option value="IT">IT</option>
+            <option value="Health and sports">Health and sports</option>
+
+        </select>
+    </div>
+
+    <input type = "submit" value = "APPLY" class="btn btn-public"/>
+    <a class="btn btn-back" href="/events/admin" role="button">
+        <i class="fas fa-backspace fa-lg"></i>
+    </a>
+ </form>
+
+{% endblock content %}
