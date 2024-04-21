@@ -21,8 +21,43 @@ table {
     overflow: hidden;
 }
 
+th {
+    position: relative; /* Назначим позицию относительно родительского элемента */
+}
+
+th input {
+    width: 100%; /* Установим ширину для input внутри th на 100%, чтобы она соответствовала ширине th */
+    box-sizing: border-box; /* Учтем padding и border внутри ширины input */
+    padding: 1px; /* Добавим отступы для внутреннего содержимого input */
+    margin: 0; /* Снимем внешние отступы, чтобы избежать распространения placeholder'ов за пределы столбца */
+}
+
+.table {
+    max-width: 1320px; /* Устанавливаем ширину таблицы на 100% */
+    /*table-layout: fixed;  Зафиксируем ширину столбцов */
+    /* width: 100%; */
+    /* overflow-x: auto; */
+    margin: 0 auto;
+}
+
+td:nth-child(10){
+    max-width: 260px;
+}
 
 
+@media (max-width: 1200px){
+    .table-container{
+        max-width: 100%!important;
+        overflow-x: auto;
+        margin-bottom: 20px;
+    }
+}
+
+.table-container {
+    border: solid #000000;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
 .header-top {
     margin-top: 40px;
     margin-bottom: 30px;
@@ -35,11 +70,13 @@ table {
 
 /* BUTTONS */
 .btn-add {
-    background-color: #000000c6;
+    background-color: #090909c5;
     color: #ffffff;
-    padding: 10px 20px;
+    padding: 10px 15px;
     border-radius: 10px;
     filter: drop-shadow(2px 2px 4px rgba(144, 144, 144, 0.59));
+    margin-bottom: 20px;
+    margin-left: auto;
 }
 
 .btn-show {
@@ -59,12 +96,13 @@ table {
     padding: 10px 20px;
     border-radius: 10px;
     filter: drop-shadow(2px 2px 4px rgba(144, 144, 144, 0.59));
+    margin-bottom: 5px;
 }
 
 .btn-delete {
     background-color: #dc0e0e;
     color: #ffffff;
-    padding: 10px 10px;
+    padding: 10px 21px;
     border-radius: 10px;
     filter: drop-shadow(2px 2px 4px rgba(144, 144, 144, 0.59));
 }
