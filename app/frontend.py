@@ -1,14 +1,9 @@
-from fastapi import APIRouter, FastAPI, Request, status, Depends
+from fastapi import APIRouter, Request, status, Depends
 from typing import Annotated
-from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from app.repositories import EventRepository
-from app.schemas import EventAdd
-from app.database import EventsORM, new_session
-from sqlalchemy import select
 from fastapi.responses import RedirectResponse
 from app.deps import get_user
-
 
 router = APIRouter(
     prefix="/events",
