@@ -1,23 +1,20 @@
-from fastapi import APIRouter, Depends, HTTPException
-from typing import Annotated
+from fastapi import APIRouter
 from app.schemas import EventAdd
 from app.repositories import EventRepository
 from fastapi.responses import RedirectResponse
-from fastapi import FastAPI, Request, Depends, Form, status
-from typing import Optional
+from fastapi import Request, Form, status
 from datetime import datetime
 
-
 router = APIRouter(
-    tags=["Events"]  # добавляем тег для отображения в Swagger UI
+    tags=["Events"]
 )
 
-
-@router.post("/api/events")
+@router.post("/api/events", response_model=EventAdd)
 async def create_event(request: Request, title: str = Form(...),
                        tag: str = Form(None), organizer: str = Form(None),
                        event_date: datetime = Form(...), registration_close_datetime: datetime = Form(None),
                        location: str = Form(None), registration_link: str = Form(None), description: str = Form(None)):
+
     event = EventAdd(title=title, tag=tag, organizer=organizer, event_date=event_date,
                      registration_close_datetime=registration_close_datetime, location=location,
                      registration_link=registration_link, description=description)
@@ -42,6 +39,7 @@ async def delete_event(event_id: int):
     result = await EventRepository.delete_event(event_id)
     return {"message": result}
 
+# if you want to use only API
 @router.get("/api/events")
 async def get_events(showAll: bool = False):
     events = await EventRepository.get_events(showAll)
