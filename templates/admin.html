@@ -2,45 +2,102 @@
 {% block content %}
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
-    $(document).ready(function() {
-        $('.events-info').click(function() {
-            var registrationLink = $(this).data('url');
-            if (registrationLink) {
-                window.location.href = registrationLink;
-            }
-        });
-    });
     function confirmDelete(id) {
         if (confirm("Действительно ли вы хотите удалить мероприятие?")) {
             window.location.href = "admin/delete/" + id;
         }
-    }
+    };
+    document.addEventListener("DOMContentLoaded", function() {
+        const table = document.querySelector(".table");
+        const headers = table.querySelectorAll("th");
+
+        headers.forEach((header, index) => {
+            const numColumnsToSkip = 1;
+            if (index < headers.length - numColumnsToSkip) {
+                const filterInput = document.createElement("input");
+                filterInput.setAttribute("type", "text");
+                filterInput.setAttribute("placeholder", "FILTER");
+                filterInput.addEventListener("input", function() {
+                    const value = this.value.toLowerCase();
+                    const rows = table.querySelectorAll("tbody tr");
+
+                    rows.forEach(row => {
+                        const cells = row.querySelectorAll("td");
+                        if (cells[index].textContent.toLowerCase().includes(value)) {
+                            row.style.display = "";
+                        } else {
+                            row.style.display = "none";
+                        }
+                    });
+                });
+
+                header.appendChild(filterInput);
+            }
+        });
+    });
+
 </script>
 
 <div class="row">
     <div class="col-12">
         <div class="btn-container">
-            <a id="showAll" href="/events?showAll=True" class="btn btn-show"><b>Show all</b></a>
-            <a id="showNotAll" href="/events?showAll=False" class="btn btn-show"><b>Hide past</b></a>
-            <a href="/events/admin/logout" class="btn btn-logout"><b> Выход </b></a>
-
+            <a id="showAll" href="/events/admin?showAll=True" class="btn btn-show"><b>SHOW ALL</b></a>
+            <a id="showNotAll" href="/events/admin?showAll=False" class="btn btn-show"><b>HIDE PAST</b></a>
+            <a href="/events/admin/logout" class="btn btn-logout">
+                <i class="fas fa-sign-out-alt fa-lg"></i>
+            </a>
+            <a href="admin/addnew/" class="btn btn-add">
+                <i class="fas fa-calendar-plus fa-lg"></i>
+            </a>
         </div>
+
+        <div class="table-container">
+            <table class="table table-bordered table-hover">
+                <thead class="table-effect">
+                    <tr>
+                        <th>Tag</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Organizer</th>
+                        <th>Date and Time</th>
+                        <th>Registration close Date</th>
+                        <th>Location</th>
+                        <th>Link</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for rs in events %}
+                        <tr>
+                            <td>{% if rs.tag is not none %}{{ rs.tag }}{% endif %}</td>
+                            <td>{% if rs.title is not none %}{{ rs.title }}{% endif %}</td>
+                            <td>{% if rs.description is not none %}{{ rs.description|truncate(100, True) }}{% endif %}</td>
+                            <td>{% if rs.organizer is not none %}{{ rs.organizer }}{% endif %}</td>
+                            <td>{% if rs.event_date is not none %}{{ rs.event_date }}{% endif %}</td>
+                            <td>{% if rs.registration_close_datetime is not none %}{{ rs.registration_close_datetime }}{% endif %}</td>
+                            <td>{% if rs.location is not none %}{{ rs.location }}{% endif %}</td>
+                            <td>
+                                <a href="{% if rs.registration_link is not none %}{{ rs.registration_link }}{% endif %}" target="_blank">
+                                    {% if rs.registration_link is not none %}{{ rs.registration_link }}{% endif %}
+                                </a>
+                            </td>
+                            <td class="btn-container-table">
+                                <a href="/events/admin/edit/{{ rs.id }}" class="btn btn-edit">
+                                    <i class="fas fa-pen fa-lg"></i>
+                                </a>
+                                <a href="javascript:void(0);" onclick="confirmDelete({{ rs.id }})" class="btn btn-delete">
+                                    <i class="fas fa-calendar-times fa-lg"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
     </div>
-</div>
-<div class="events-container">
-    {% for rs in events %}
-        <div class="events-info" data-url="{% if rs.registration_link is not none %}{{ rs.registration_link }}{% endif %}">            <div class="head-info">
-                <h3>{% if rs.title is not none %}{{ rs.title }}{% endif %}</h3>
-                <b class="date-info">{% if rs.event_date is not none %}{{ rs.event_date.strftime('%d.%m.%Y - %H:%M') }}{% endif %}</b>
-            </div>
-            <p><strong>Registration Deadline:</strong> {% if rs.registration_close_datetime is not none %}{{ rs.registration_close_datetime }}{% endif %}</p>
-            <p><strong>Location:</strong> {% if rs.location is not none %}{{ rs.location }}{% endif %}</p>
-            <div>
-
-            </div>
-        </div>
-    {% endfor %}
 </div>
 
 
